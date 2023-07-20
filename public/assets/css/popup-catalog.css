@@ -1,0 +1,41 @@
+.popup-menu-catalog{
+    position: fixed;
+    top: 0;
+    left: -450px;
+    background-color: #212529;
+    width: 450px;
+    height: 100vh;
+}
+.popup_header{
+    height: 71px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212529;
+    padding: 0 10px;
+}
+.popup_close{
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.popup_content{
+    height: 100vh;
+    background-color: gray;
+    color: white;
+}
+.popup_content_spisok{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    font-size: 20px;
+    margin: 0 20px;
+    padding: 0;
+}
+.popup_content_spisok li{
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+    padding: 0;
+}
