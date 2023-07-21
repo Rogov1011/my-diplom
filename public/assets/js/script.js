@@ -27,4 +27,6 @@ $(document).ready(function (){
         let pupup = $('.pupup');
         pupup.fadeOut(500);
     })
+
+    $(".message_register").fadeOut(2000);
 })
