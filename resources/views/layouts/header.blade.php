@@ -25,6 +25,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#">Личный кабинет</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route("adminIndex") }}">Страница администратора</a>
+                        </li>
                     @endif
                 </ul>
                 <ul class="navbar-nav mx-4">

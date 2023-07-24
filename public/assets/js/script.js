@@ -27,6 +27,6 @@ $(document).ready(function (){
         let pupup = $('.pupup');
         pupup.fadeOut(500);
     })
-
+    //Сообщение о регистрации
     $(".message_register").fadeOut(2000);
 })
