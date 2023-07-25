@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,4 +37,14 @@ Route::prefix("categories")->group(function () {
     Route::put("{categoryId}/edit", [CategoryController::class, "updateCategory"])->name("categories.update");
     Route::delete("{categoryId}", [CategoryController::class, "destroyCategory"])->name("categories.delete");
     Route::get('{categoryId}/removeimage', [CategoryController::class, 'removeImage'])->name("category.removeImage");
+});
+//Подкатегории
+Route::prefix("subcategories")->group(function () {
+    Route::get("/", [SubcategoryController::class, "SubCategoryList"])->name("indexSubCategory");
+    Route::get("create", [SubcategoryController::class, "createSubCategory"])->name("Subcategories.create");
+    Route::post("create", [SubcategoryController::class, "storeSubCategory"])->name("Subcategories.store");
+    Route::get("{subcategoryId}/edit", [SubcategoryController::class, "editSubCategory"])->name("Subcategories.edit");
+    Route::put("{subcategoryId}/edit", [SubcategoryController::class, "updateSubCategory"])->name("Subcategories.update");
+    Route::delete("{subcategoryId}", [SubcategoryController::class, "destroySubCategory"])->name("Subcategories.delete");
+    Route::get('{subcategoryId}/removeimage', [SubcategoryController::class, 'removeImage'])->name("SubCategory.removeImage");
 });

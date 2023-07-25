@@ -12,7 +12,7 @@ class CategoryController extends Controller
             "categories"=> Category::all()->sortBy("name")
         ]);
     }
-
+    
     public function createCategory()
     {
         return view("category.create-category");

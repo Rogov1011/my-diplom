@@ -8,30 +8,28 @@
     </div>
     @if ($categories->count())
         <div>
-            <table class="table table-striped">
+            <table class="table table-striped text-center">
                 <thead>
                     <tr>
-                        <td>id</td>
+                        <td>Категория</td>
                         <td>Изображение</td>
-                        <td>Категории</td>
                         <td>Действия</td>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($categories as $category)
                         <tr>
-                            <td>{{ $category->id }}</td>
+                            <td class="fw-bold">{{ $category->name }}</td>
                             <td>
                                 <img src="{{ $category->getImage() }}" alt="" style="width: 80px">
                             </td>
-                            <td>{{ $category->name }}</td>
                             <td>
-                                <div class="d-flex">
+                                <div class="d-flex justify-content-center">
                              <a href="{{ route('categories.edit', $category->id) }}"
-                                 class="btn btn-sm btn-success">Редактировать</a>
+                                 class="btn btn-sm btn-success">Ред.</a>
                              <form action="{{ route('categories.delete', $category->id) }}" method="POST" class="mx-3">
                                  @csrf @method('DELETE')
-                                 <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
+                                 <button type="submit" class="btn btn-sm btn-danger" onclick='event.preventDefault();if(confirm("Запись бдет удалена. Продолжить?")){this.closest("form").submit();}'>Удалить</button>
                              </form>
                          </div>
                             </td>

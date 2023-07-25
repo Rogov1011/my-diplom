@@ -2,26 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Cache\Store;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Category extends Model
+class Subcategory extends Model
 {
     use HasFactory;
+    protected $fillable = ['name', 'image', 'category_id'];
 
-    protected $fillable = ['name', 'image'];
-
-    public function subcategories(){
-        return $this->hasMany(Subcategory::class);
+    public function category(){
+        return $this->belongsTo(Category::class);
     }
 
     public function uploadImage($file)
     {
         if ($file == null) return false;
         $filename = $file->getClientOriginalName();
-        $path = 'categories/categories_' . $this->id . '/';
+        $path = 'subCategories/subCategories_' . $this->id . '/';
         $this->removeImage();
         $file->storeAs($path, $filename, 'uploads');
         $this->image = $path . $filename;
