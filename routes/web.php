@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SubcategoryController;
 use Illuminate\Support\Facades\Route;
 
@@ -47,4 +48,14 @@ Route::prefix("subcategories")->group(function () {
     Route::put("{subcategoryId}/edit", [SubcategoryController::class, "updateSubCategory"])->name("Subcategories.update");
     Route::delete("{subcategoryId}", [SubcategoryController::class, "destroySubCategory"])->name("Subcategories.delete");
     Route::get('{subcategoryId}/removeimage', [SubcategoryController::class, 'removeImage'])->name("SubCategory.removeImage");
+});
+//Товары
+Route::prefix("products")->group(function () {
+    Route::get("/", [ProductController::class, "productList"])->name("indexProduct");
+    Route::get("create", [ProductController::class, "createProduct"])->name("products.create");
+    Route::post("create", [ProductController::class, "storeProduct"])->name("products.store");
+    Route::get("{productId}/edit", [ProductController::class, "editProduct"])->name("products.edit");
+    Route::put("{productId}/edit", [ProductController::class, "updateProduct"])->name("products.update");
+    Route::delete("{productId}", [ProductController::class, "destroyProduct"])->name("products.delete");
+    Route::get('{productId}/removeimage', [ProductController::class, 'removeImage'])->name("products.removeImage");
 });

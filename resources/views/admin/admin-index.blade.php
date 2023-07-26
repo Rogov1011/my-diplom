@@ -25,8 +25,8 @@
                 <tr>
                     <td><a class="text-decoration-none text-dark" href="">Товары</a></td>
                     <td class="d-flex justify-content-end">
-                        <a href="" class="btn btn-sm btn-dark mx-2">Создать</a>
-                        <a href="" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
+                        <a href="{{ route('products.create') }}" class="btn btn-sm btn-dark mx-2">Создать</a>
+                        <a href="{{ route('indexProduct') }}" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
                     </td>
                 </tr>
                 <tr>

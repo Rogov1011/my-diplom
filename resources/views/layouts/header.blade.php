@@ -26,38 +26,38 @@
                             <a class="nav-link" href="#">Личный кабинет</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route("adminIndex") }}">Страница администратора</a>
+                            <a class="nav-link" href="{{ route('adminIndex') }}">Страница администратора</a>
                         </li>
                     @endif
                 </ul>
                 <ul class="navbar-nav mx-4">
                     @if (auth()->user())
+                        <li class="nav-item">
+                            <a class="nav-link icon-header" href="#"><img
+                                    src="{{ asset('assets/icon/health.png') }}">(0)</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link icon-header" href="#"><img
+                                    src="{{ asset('assets/icon/cart.png') }}">(0)</a>
+                        </li>
                     @else
                         <li class="nav-item">
                             <a class="nav-link icon-header" href="#"><img class="open-popup-auth"
-                                    src="{{ asset('assets/icon/user.png') }}"></a>
+                                    src="{{ asset('assets/icon/user.png') }}"><span class="open-popup-auth">Войти</span></a>
                         </li>
                     @endif
-                    <li class="nav-item">
-                        <a class="nav-link icon-header" href="#"><img
-                                src="{{ asset('assets/icon/health.png') }}">(0)</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link icon-header" href="#"><img
-                                src="{{ asset('assets/icon/cart.png') }}">(0)</a>
-                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2 bg-light" type="search" placeholder="Поиск" aria-label="Поиск">
                     <button class="btn btn-outline-light" type="submit">Поиск</button>
                 </form>
                 @if (auth()->user())
-                <form class="mx-4" action="{{ route("auth.logout") }}" method="POST">
-                    @csrf
-                    <button type="submit" class="nav-link icon-header"><img
-                        src="{{ asset('assets/icon/exit.png') }}"></button>
-                </form>
-            @endif
+                    <form class="mx-4" action="{{ route('auth.logout') }}" method="POST">
+                        @csrf
+                        <button type="submit" class="nav-link icon-header"><img
+                                src="{{ asset('assets/icon/exit.png') }}"></button>
+                    </form>
+                @endif
             </div>
         </div>
     </nav>

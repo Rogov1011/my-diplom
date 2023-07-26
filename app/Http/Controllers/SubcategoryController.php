@@ -26,8 +26,7 @@ class SubcategoryController extends Controller
     {
         $request->validate([
             'name' => ['required'],
-            'category_id' => ['required'],
-            'image' => ['required']
+            'category_id' => ['required']
         ]);
         $SubCategory = Subcategory::create($request->all());
         $SubCategory -> uploadImage($request->file('image'));

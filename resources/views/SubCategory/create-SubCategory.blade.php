@@ -3,6 +3,7 @@
 @section('title', __('Новая категория'))
 @section('content')
     <div class="d-flex justify-content-between align-items-center my-5">
+        @if ($categories->count())
         <h2>Новая подкатегория</h2>
     </div>
 
@@ -38,5 +39,7 @@
             <button class="btn btn-dark my-5">Добавить</button>
         </form>
     </div>
-
+    @else
+    <h3>Добавьте сначала категорию товара</h3>
+    @endif
 @endsection

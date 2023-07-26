@@ -6,23 +6,20 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Subcategory extends Model
+class Product extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'image', 'category_id'];
+    protected $fillable = ['title', 'description', 'image', 'price', 'quantity', 'is_published', 'subcategory_id'];
 
-    public function category(){
-        return $this->belongsTo(Category::class);
-    }
-    public function products(){
-        return $this->hasMany(Product::class);
+    public function subcategory(){
+        return $this->belongsTo(Subcategory::class);
     }
 
     public function uploadImage($file)
     {
         if ($file == null) return false;
         $filename = $file->getClientOriginalName();
-        $path = 'subCategories/subCategories_' . $this->id . '/';
+        $path = 'products/products_' . $this->id . '/';
         $this->removeImage();
         $file->storeAs($path, $filename, 'uploads');
         $this->image = $path . $filename;

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float("sale_price")->nullable();
             $table->float("quantity")->nullable();
             $table->boolean("is_published")->default(1);
-            $table->foreignId("product_id")->references("id")->on("subcategories")->cascadeOnDelete();
+            $table->foreignId("subcategory_id")->references("id")->on("subcategories")->cascadeOnDelete();
             $table->timestamps();
         });
     }

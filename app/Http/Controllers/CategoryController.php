@@ -21,8 +21,7 @@ class CategoryController extends Controller
     public function storeCategory(Request $request)
     {
         $request->validate([
-            'name' => ['required'],
-            'image' => ['required']
+            'name' => ['required']
         ]);
         $category = Category::create($request->all());
         $category -> uploadImage($request->file('image'));
