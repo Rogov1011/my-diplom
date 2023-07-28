@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AppController::class, 'mainPage'])->name("mainPage");
+Route::get('catalog/categories/{category}/', [AppController::class, 'getCategoriesBySubCategories'])->name('app.catalog-by-subCategories');
 
 
 Route::get("register", [AuthController::class, "registerPage"])->name("auth.register");

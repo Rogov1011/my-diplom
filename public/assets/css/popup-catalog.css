@@ -5,6 +5,7 @@
     background-color: #212529;
     width: 450px;
     height: 100vh;
+    z-index: 1;
 }
 .popup_header{
     height: 71px;

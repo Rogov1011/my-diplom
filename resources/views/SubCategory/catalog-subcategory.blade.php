@@ -17,14 +17,14 @@
         </form>
         <tbody>
             <div class="row">
-                @foreach ($categories as $category)
+                @foreach ($subCategory as $subCat)
                     <div class="col-lg-3">
                         <div class="card mb-5 col-12 d-flex justify-content-center align-items-center">
-                            <img src="{{ $category->getImage() }}" alt="" style="width:150px; height:100px">
+                            <img src="{{ $subCat->getImage() }}" alt="" style="width:150px; height:100px">
                             <div class="card-head">
-                                <h6 class="card-title text-center fs-5">{{ $category->name }}</h6>
+                                <h6 class="card-title text-center fs-5">{{ $subCat->name }}</h6>
                             </div>
-                            <a href="{{ route("app.catalog-by-subCategories", $category) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                            <a href="" class="btn btn-sm btn-dark my-2">Перейти</a>
                         </div>
                     </div>
                 @endforeach

@@ -8,7 +8,9 @@
     <div class="popup_content">
         <ul class="popup_content_spisok">
             @foreach ($categories as $category)
-                <li>{{ $category->name }}</li>
+                <a class="text-decoration-none" href="{{ route("app.catalog-by-subCategories", $category) }}">
+                    <li class="text-decoration-none text-light">{{ $category->name }}</li>
+                </a>
             @endforeach
         </ul>
     </div>
