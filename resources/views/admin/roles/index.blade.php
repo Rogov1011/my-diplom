@@ -6,25 +6,20 @@
         <h2>Роли</h2>
         <a href="{{ route('roles.create') }}" class="btn btn-dark">Добавить</a>
     </div>
-
-    <div class="container col-8">
+    <div class="row">
         <table class="table table-bordered">
             <thead class="table-dark">
                 <tr>
                     <td>Роль</td>
-                    <td class="d-flex text-center">Действие</td>
+                    <td class="d-flex">Действие</td>
                 </tr>
             </thead>
-            <tbody>
+            <tbody class="col-4">
                 @foreach ($roles as $role)
                     <tr>
-                        <td>{{ $role->name }}</td>
-                        <td class="d-flex justify-content-end">
-                            <a href="{{ route('roles.edit', $role) }}" class="btn btn-sm btn-warning">Редактировать</a>
-                            <form action="" method="POST" class="mx-3">
-                                @csrf @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Удалить</button>
-                            </form>
+                        <td class="col-9">{{ $role->name }}</td>
+                        <td class="d-flex">
+                            <a href="{{ route('roles.edit', $role) }}" class="btn btn-sm btn-success">Редактировать</a>
                         </td>
                     </tr>
                 @endforeach

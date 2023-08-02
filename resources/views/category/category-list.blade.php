@@ -9,7 +9,7 @@
     @if ($categories->count())
         <div>
             <table class="table table-striped text-center">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <td>Категория</td>
                         <td>Изображение</td>

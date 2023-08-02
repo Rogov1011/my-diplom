@@ -9,7 +9,7 @@
     @if ($products->count())
         <div>
             <table class="table table-striped text-center">
-                <thead>
+                <thead class="table-dark">
                     <tr>
                         <td>Товар</td>
                         <td>Подкатегория</td>

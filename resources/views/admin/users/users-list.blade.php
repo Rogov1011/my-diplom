@@ -7,8 +7,8 @@
 </div>
 
 <div>
-    <table class="table table-striped ">
-        <thead>
+    <table class="table table-striped text-center">
+        <thead class="table-dark">
             <tr>
                 <td>ФИО</td>
                 <td>email</td>
@@ -22,8 +22,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->getRoles()}}</td>
-
-                <td class="d-flex">
+                <td class="d-flex justify-content-center">
                     <a href="{{ route("users.edit", $user) }}" class="btn btn-sm btn-success">Редактировать</a>
                     <form action="" method="POST" class="mx-3">
                         @csrf @method("DELETE")
