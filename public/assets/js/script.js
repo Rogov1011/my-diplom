@@ -8,6 +8,7 @@ $(document).ready(function (){
             left: 0,
         },500);
     })
+
     $popup_catalog_closed.on("click", function (e){
         e.preventDefault();
         $(".popup-menu-catalog").animate({
@@ -15,18 +16,18 @@ $(document).ready(function (){
         },500);
     })
 
-
-
     //Модельное окно авторизации
     $('.open-popup-auth').on('click', function(){
         let pupup = $('.pupup');
         pupup.fadeIn(500);
     })
+
     $('.closed-popup-auth').on('click', function(e){
         e.preventDefault();
         let pupup = $('.pupup');
         pupup.fadeOut(500);
     })
+    
     //Сообщение о регистрации
     $(".message_register").fadeOut(2000);
 })

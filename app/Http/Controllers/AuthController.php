@@ -24,8 +24,9 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->input("name"),
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
         ]);
+        $user->syncRoles('user');
 
         // Mail::to($user->email)->send(new RegisterSuccessmMail($user));
 

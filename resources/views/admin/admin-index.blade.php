@@ -32,15 +32,20 @@
                 <tr>
                     <td><a class="text-decoration-none text-dark" href="">Заказы</a></td>
                     <td class="d-flex justify-content-end">
-                        <a href="" class="btn btn-sm btn-success mx-2">Редактировать</a>
                         <a href="" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
                     </td>
                 </tr>
                 <tr>
                     <td><a class="text-decoration-none text-dark" href="">Пользователи</a></td>
                     <td class="d-flex justify-content-end">
-                        <a href="" class="btn btn-sm btn-success mx-2">Редактировать</a>
-                        <a href="" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
+                        <a href="{{ route("users.index") }}" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a class="text-decoration-none text-dark" href="">Создание роли для пользователя</a></td>
+                    <td class="d-flex justify-content-end">
+                        <a href="{{ route('roles.create') }}" class="btn btn-sm btn-dark mx-2">Создать</a>
+                        <a href="{{ route('roles.index') }}" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
                     </td>
                 </tr>
             </tbody>

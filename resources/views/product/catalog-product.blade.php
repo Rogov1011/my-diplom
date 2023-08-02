@@ -3,8 +3,8 @@
 @section('title', 'Главная страница')
 
 @section('content')
-    <h1 class="my-5 text-center">Товары</h1>
-    @if ($subCategory->count())
+    <h1 class="my-5 text-center">Подкатегории товаров</h1>
+    @if ($products->count())
         @if (session('success_register'))
             <div class="alert alert-dark col-6 message_register">
                 {{ session('success_register') }}
@@ -18,17 +18,20 @@
             </form>
             <tbody>
                 <div class="card-head">
-                    <h3 class="card-title text-center my-5">{{ $category->name }}</h3>
+                    <h3 class="card-title text-center my-5">{{ $subcategory->name }}</h3>
                 </div>
                 <div class="row">
-                    @foreach ($subCategory as $subCat)
+                    @foreach ($products as $product)
                         <div class="col-lg-3">
                             <div class="card mb-5 col-12 d-flex justify-content-center align-items-center">
-                                <img src="{{ $subCat->getImage() }}" alt="" style="width:150px; height:100px">
+                                <img src="{{ $product->getImage() }}" alt="" style="width:150px; height:100px">
                                 <div class="card-head">
-                                    <h6 class="card-title text-center fs-5">{{ $subCat->name }}</h6>
+                                    <h6 class="card-title text-center fs-5">{{ $product->title }}</h6>
                                 </div>
-                                <a href="{{ route("app.catalog-by-products", $subCat) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                                <div class="card-head">
+                                    <h6 class="card-title text-center fs-5">{{ $product->getPrice() }}</h6>
+                                </div>
+                                <a href="{{ route("showProducts", $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
                             </div>
                         </div>
                     @endforeach
@@ -52,7 +55,7 @@
             </div> --}}
             </tbody>
         @else
-            <h3>Ещё нет добавленных товаров</h3>
+            <h3>Ещё нет добавленных подкатегорий</h3>
     @endif
     </div>
 @endsection

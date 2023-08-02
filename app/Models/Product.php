@@ -48,4 +48,8 @@ class Product extends Model
         $this->removeImage();
         $this->delete();
     }
+
+    public function getPrice(){
+        return number_format($this->price, 2, ",", " ") . " руб";
+    }
 }

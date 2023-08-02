@@ -43,4 +43,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getRoles(){
+        $roles = [];
+        foreach($this->roles as $role){
+            $roles[] = $role->name;
+        }
+        return implode(',', $roles );
+    }
 }

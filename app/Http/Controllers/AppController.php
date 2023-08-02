@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,21 @@ class AppController extends Controller
         return view("SubCategory.catalog-subcategory", [
             'subCategory' => $subCategory,
             'category' => $category
+        ]);
+    }
+
+    public function getProductsBySubCategories(Subcategory $subcategory){
+        $product = $subcategory->products;
+        return view("product.catalog-product", [
+            'subcategory' => $subcategory,
+            'products' => $product
+        ]);
+    }
+
+    public function showProduct(Product $product)
+    {
+        return view("product.product-show", [
+            "products" => $product
         ]);
     }
 }
