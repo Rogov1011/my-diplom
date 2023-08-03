@@ -76,7 +76,7 @@
             </div>
             <div class="form-group my-3">
                 <label for="is_published" class="form-label">
-                    <input type="checkbox" id="is_published" name="is_published" class="form-check-input" value="1" @if(old("is_published") == 1) checked @endif> Есть в наличии
+                    <input type="checkbox" id="is_published" name="is_published" class="form-check-input" value="1" @if(old("is_published") == 1) checked @endif> опубликовать
                 </label>
             </div>
             <button class="btn btn-dark my-5">Добавить</button>

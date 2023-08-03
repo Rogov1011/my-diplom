@@ -10,8 +10,8 @@ class SubcategoryController extends Controller
 {
     public function SubCategoryList(){
         return view("SubCategory.SubCategory-list", [
-            "subCategories"=> Subcategory::all()->sortBy("name"),
-            "category"=> Category::all()->sortBy("name")
+            "subCategories"=> Subcategory::all()->sortByDesc("category_id"),
+            "category"=> Category::all()
         ]);
     }
 

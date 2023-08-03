@@ -16,27 +16,38 @@
                 <button class="btn btn-dark mx-3">Найти</button>
                 <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
             </form>
-            <tbody>
-                <div class="card-head">
-                    <h3 class="card-title text-center my-5">{{ $subcategory->name }}</h3>
-                </div>
-                <div class="row">
-                    @foreach ($products as $product)
+            <div class="card-head">
+                <h3 class="card-title text-center my-5">{{ $subcategory->name }}</h3>
+            </div>
+            <div class="row col-11">
+                @foreach ($products as $product)
+                    @if ($product->is_published == 0)
+                    <h3 class="d-flex justify-content-center">Извините товаров пока нет!!!</h3>
+                    @else
                         <div class="col-lg-3">
                             <div class="card mb-5 col-12 d-flex justify-content-center align-items-center">
-                                <img src="{{ $product->getImage() }}" alt="" style="width:150px; height:100px">
+                                <img src="{{ $product->getImage() }}" alt="" style="width:130px; height:100px">
                                 <div class="card-head">
                                     <h6 class="card-title text-center fs-5">{{ $product->title }}</h6>
                                 </div>
                                 <div class="card-head">
-                                    <h6 class="card-title text-center fs-5">{{ $product->getPrice() }}</h6>
+                                    <h6 class="card-title text-center fs-5 text-danger">{{ $product->getPrice() }}</h6>
                                 </div>
-                                <a href="{{ route("showProducts", $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                                <a href="{{ route('showProducts', $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                                @if ($product->quantity == 0)
+                                    <h6 class="card-title text-center fs-5 text-danger"> нет в наличии</h6>
+                                @else
+                                    <div class="card-head">
+                                        <h6 class="card-title text-center fs-5 text-danger">{{ $product->quantity }} шт.
+                                        </h6>
+                                    </div>
+                                @endif
                             </div>
                         </div>
-                    @endforeach
-                </div>
-                {{-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                    @endif
+                @endforeach
+            </div>
+            {{-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
             <div class="btn-group me-2" role="group" aria-label="First group">
                 @if ($products->count() > 11)
                     @if ($products->currentPage() > 1)
@@ -53,9 +64,8 @@
                     @endif
                 </div>
             </div> --}}
-            </tbody>
         @else
-            <h3>Ещё нет добавленных подкатегорий</h3>
+            <h3>Ещё нет добавленных товаров</h3>
     @endif
     </div>
 @endsection

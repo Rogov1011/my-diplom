@@ -72,10 +72,10 @@
             <div class="form-group my-3">
                 <label for="is_published" class="form-label">
                     <input type="checkbox" id="is_published" name="is_published" class="form-check-input" value="1"
-                        @if (old('is_published') == 1) checked @endif> Есть в наличии
+                        @if (old('is_published') == 1) checked @endif> Опубликовать
                 </label>
             </div>
-            <button class="btn btn-dark my-5">Добавить</button>
+            <button class="btn btn-dark my-5">Сохранить</button>
         </form>
     </div>
 @endsection

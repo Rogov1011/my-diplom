@@ -49,6 +49,13 @@ class Product extends Model
         $this->delete();
     }
 
+    public function Is_PublishedStatus(){
+        if ($this -> is_published){
+            return '<span class="badge text-bg-success">да</span>';
+        }
+        return '<span class="badge text-bg-danger">нет</span>';
+    }
+
     public function getPrice(){
         return number_format($this->price, 2, ",", " ") . " руб";
     }

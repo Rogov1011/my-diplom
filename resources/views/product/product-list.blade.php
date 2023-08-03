@@ -4,6 +4,13 @@
 @section('content')
     <div class="d-flex justify-content-between align-items-center my-5">
         <h2>Товары</h2>
+        <div class="container">
+            <form action="" method="GET" class="d-flex">
+                <input type="text" name="search" placeholder="Введите запрос" class="col-6">
+                <button class="btn btn-dark mx-3">Найти</button>
+                <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
+            </form>
+        </div>
         <a href="{{ route('products.create') }}" class="btn btn-dark">Добавить</a>
     </div>
     @if ($products->count())
@@ -15,6 +22,8 @@
                         <td>Подкатегория</td>
                         <td>Категория</td>
                         <td>Изображение</td>
+                        <td>Наличие</td>
+                        <td>Опубликовано</td>
                         <td>Действия</td>
                     </tr>
                 </thead>
@@ -25,8 +34,19 @@
                             <td>{{ $product->subcategory->name }}</td>
                             <td>{{ $product->subCategory->category->name }}</td>
                             <td>
-                                <img src="{{ $product->getImage() }}" alt="" style="width: 100px">
+                                <img src="{{ $product->getImage() }}" alt="" style="width: 50px; height: 50px">
                             </td>
+                            <td>
+                                @if ($product->quantity == 0)
+                                    <p class="card-title text-center text-dark"> нет в наличии</p>
+                                @else
+                                    <div class="card-head">
+                                        <p class="card-title text-center text-dark">{{ $product->quantity }} шт.
+                                        </p>
+                                    </div>
+                                @endif
+                            </td>
+                            <td>{!! $product->Is_PublishedStatus() !!}</td>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <a href="{{ route('products.edit', $product->id) }}"

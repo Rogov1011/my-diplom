@@ -16,7 +16,6 @@
                 <button class="btn btn-dark mx-3">Найти</button>
                 <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
             </form>
-            <tbody>
                 <div class="card-head">
                     <h3 class="card-title text-center my-5">{{ $category->name }}</h3>
                 </div>
@@ -50,7 +49,6 @@
                     @endif
                 </div>
             </div> --}}
-            </tbody>
         @else
             <h3>Ещё нет добавленных товаров</h3>
     @endif
