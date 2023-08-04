@@ -44,11 +44,17 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function getRoles(){
+    public function cart()
+    {
+        return $this->hasOne(Cart::class);
+    }
+
+    public function getRoles()
+    {
         $roles = [];
-        foreach($this->roles as $role){
+        foreach ($this->roles as $role) {
             $roles[] = $role->name;
         }
-        return implode(',', $roles );
+        return implode(',', $roles);
     }
 }

@@ -26,5 +26,11 @@ class AppServiceProvider extends ServiceProvider
                 "currentUser" => auth()->user()
             ]);
         });
+        view()->composer('layouts.header', function($view){
+            $view->with([
+                'categories' => Category::all()->sortBy('name'),
+                "currentUser" => auth()->user()
+            ]);
+        });
     }
 }

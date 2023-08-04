@@ -22,23 +22,36 @@
             <div class="row col-11">
                 @foreach ($products as $product)
                     @if ($product->is_published == 0)
-                    <h3 class="d-flex justify-content-center">Извините товаров пока нет!!!</h3>
+                        <h3 class="d-flex justify-content-center">Извините товаров пока нет!!!</h3>
                     @else
                         <div class="col-lg-3">
                             <div class="card mb-5 col-12 d-flex justify-content-center align-items-center">
-                                <img src="{{ $product->getImage() }}" alt="" style="width:130px; height:100px">
                                 <div class="card-head">
                                     <h6 class="card-title text-center fs-5">{{ $product->title }}</h6>
                                 </div>
+                                <img src="{{ $product->getImage() }}" alt="" style="width:100px; height:100px">
                                 <div class="card-head">
-                                    <h6 class="card-title text-center fs-5 text-danger">{{ $product->getPrice() }}</h6>
+                                    <h3 class="card-title text-center text-dark">{{ $product->getPrice() }}</h3>
                                 </div>
-                                <a href="{{ route('showProducts', $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                                <div class="container d-flex justify-content-between px-4">
+                                    <a href="{{ route('showProducts', $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                                    @if (auth()->user())
+                                        @if ($product->quantity == 0)
+                                            <button class="btn btn-sm btn-light my-2">В
+                                                корзину</button>
+                                        @else
+                                            <a href="{{route('cart.add-product', $product)}}" type="button" class="btn btn-sm btn-dark my-2 add-to-cart">В
+                                                корзину</a>
+                                        @endif
+                                    @else
+                                        <button class="btn btn-sm btn-dark my-2 open-popup-auth">В корзину</button>
+                                    @endif
+                                </div>
                                 @if ($product->quantity == 0)
-                                    <h6 class="card-title text-center fs-5 text-danger"> нет в наличии</h6>
+                                    <h6 class="card-title text-center fs-5 text-dark"> нет в наличии</h6>
                                 @else
                                     <div class="card-head">
-                                        <h6 class="card-title text-center fs-5 text-danger">{{ $product->quantity }} шт.
+                                        <h6 class="card-title text-center fs-5 text-dark">{{ $product->quantity }} шт.
                                         </h6>
                                     </div>
                                 @endif

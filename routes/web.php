@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
@@ -26,6 +27,10 @@ Route::get('/', [AppController::class, 'mainPage'])->name("mainPage");
 Route::get('catalog/categories/{category}/', [AppController::class, 'getCategoriesBySubCategories'])->name('app.catalog-by-subCategories');
 Route::get('catalog/subCategories/{subcategory}/', [AppController::class, 'getProductsBySubCategories'])->name('app.catalog-by-products');
 Route::get("products/show/{product}", [AppController::class, "showProduct"])->name("showProducts");
+
+Route::get("add-to-cart/{product}/", [CartController::class, 'addToCart'])->name('cart.add-product');
+Route::get("cart", [CartController::class, 'cartPage'])->name('cart');
+Route::put("cart/items/{item}/edit", [CartController::class, 'changeQty'])->name('cart.items.qty-update');
 
 
 Route::get("register", [AuthController::class, "registerPage"])->name("auth.register");
