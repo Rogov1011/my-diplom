@@ -36,11 +36,11 @@
                     @if ($currentUser)
                         <li class="nav-item">
                             @if ($currentUser->cart)
-                                <a class="nav-link icon-header d-flex" href="#"><img
-                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart">{{ $currentUser->cart->items->count() }}</p></a>
+                                <a class="nav-link icon-header d-flex" href="{{ route("cart") }}"><img
+                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">{{ $currentUser->cart->items->count() }}</p></a>
                             @else
-                                <a class="nav-link icon-header" href="#"><img
-                                        src="{{ asset('assets/icon/cart.png') }}"></a>
+                                <a class="nav-link icon-header d-flex" href="{{ route("cart") }}"><img
+                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">0</p></a>
                             @endif
                         </li>
                     @else

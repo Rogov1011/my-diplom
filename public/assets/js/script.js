@@ -47,12 +47,26 @@ $(document).ready(function () {
             success: function (res) {
                 let $sticky = $(".sticky-message");
                 let message =
-                    '<div class="alert alert-success">' + res["success"] + "</div>";
-                $sticky.html(message);
+                    '<div class="alert alert-dark">' +
+                    res["success"] +
+                    "</div>";
+                $sticky.fadeIn(10).html(message);
+                $sticky.fadeOut(2000);
 
                 let $headerCart = $(".header-cart");
                 $headerCart.html(res["qty"]);
             },
         });
     });
+
+    //Изменение количества товара в корзине
+    $(".change-qty").on("change", function () {
+        $(this).closest("form").submit();
+    });
+
+    //Маска телефона
+    let $phone = $("#phone");
+    if ($phone.length > 0) {
+        $("#phone").inputmask({ mask: "+7 (999) 999-99-99" });
+    }
 });

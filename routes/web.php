@@ -5,6 +5,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SubcategoryController;
@@ -31,6 +32,7 @@ Route::get("products/show/{product}", [AppController::class, "showProduct"])->na
 Route::get("add-to-cart/{product}/", [CartController::class, 'addToCart'])->name('cart.add-product');
 Route::get("cart", [CartController::class, 'cartPage'])->name('cart');
 Route::put("cart/items/{item}/edit", [CartController::class, 'changeQty'])->name('cart.items.qty-update');
+Route::delete("cart/items/{item}", [CartController::class, 'destroy'])->name('cart.items.destroy');
 
 
 Route::get("register", [AuthController::class, "registerPage"])->name("auth.register");
@@ -86,4 +88,11 @@ Route::prefix("roles")->middleware('role:super-admin')->group(function () {
     Route::post("create", [RoleController::class, "store"])->name("roles.store");
     Route::get("{role}/edit", [RoleController::class, "edit"])->name("roles.edit");
     Route::put("{role}/edit", [RoleController::class, "update"])->name("roles.update");
+
 });
+//Заказы
+Route::get('checkout', [OrderController::class, "checkoutPage"])->name("app.checkout");
+Route::post('checkout', [OrderController::class, "storeOrder"])->name("app.storeOrder");
+Route::get('order/{order}/thankyou', [OrderController::class, "thankyouPage"])->name("app.order-thankyou");
+
+Route::get("orders", [OrderController::class, "orders"])->name("admin.orders");

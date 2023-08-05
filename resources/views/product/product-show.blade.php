@@ -23,7 +23,7 @@
             <button class="btn btn-light">В
                 корзину</button>
         @else
-            <a href="{{route('cart.add-product', $product)}}" type="button" class="btn btn-dark add-to-cart">В
+            <a href="{{route('cart.add-product', $products)}}" type="button" class="btn btn-dark add-to-cart">В
                 корзину</a>
         @endif
     @else

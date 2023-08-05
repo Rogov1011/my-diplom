@@ -50,7 +50,7 @@ class CartController extends Controller
 
     public function cartPage()
     {
-        return view('cart', [
+        return view('cart.cart', [
             'cart' => auth()->user()->cart
         ]);
     }
