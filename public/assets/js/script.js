@@ -69,4 +69,15 @@ $(document).ready(function () {
     if ($phone.length > 0) {
         $("#phone").inputmask({ mask: "+7 (999) 999-99-99" });
     }
+
+    $(".changeStatus").on("change", function () {
+        let select = $(this);
+        $.ajax({
+            url:
+                select.closest("form").attr("action") +
+                "?status=" +
+                select.val(),
+            method: "GET",
+        });
+    });
 });

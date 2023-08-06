@@ -79,6 +79,7 @@ Route::prefix("users")->middleware('role:super-admin')->group(function () {
     Route::get("/", [UserController::class, "index"])->name("users.index");
     Route::get("{user}/edit", [UserController::class, "edit"])->name("users.edit");
     Route::put("{user}/edit", [UserController::class, "update"])->name("users.update");
+    Route::get("orders", [OrderController::class, "ordersAdmin"])->name("admin.orders");
 });
 
 //Роли
@@ -94,5 +95,4 @@ Route::prefix("roles")->middleware('role:super-admin')->group(function () {
 Route::get('checkout', [OrderController::class, "checkoutPage"])->name("app.checkout");
 Route::post('checkout', [OrderController::class, "storeOrder"])->name("app.storeOrder");
 Route::get('order/{order}/thankyou', [OrderController::class, "thankyouPage"])->name("app.order-thankyou");
-
-Route::get("orders", [OrderController::class, "orders"])->name("admin.orders");
+Route::get("orders", [OrderController::class, "orders"])->name("orders");

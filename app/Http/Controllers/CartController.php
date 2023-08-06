@@ -26,24 +26,24 @@ class CartController extends Controller
 
         $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $product->id)->first();
 
-        // if (!$cartItem) {
+        if (!$cartItem) {
             $cartItem = CartItem::create([
                 'cart_id' => $cart->id,
                 'product_id' => $product->id,
                 'price' => $product->price,
                 'sub_total' => $product->price
             ]);
-        // } else {
-        //     $cart->update([
-        //         'quantity' => $cartItem->quantity + 1
-        //     ]);
-        //     $cartItem->setSubTotal();
-        // }
+        } else {
+            $cart->update([
+                'quantity' => $cartItem->quantity + 1
+            ]);
+            $cartItem->setSubTotal();
+        }
 
-        // $cart->setTotalPrice();
+        $cart->setTotalPrice();
 
         return response()->json([
-            'qty' => $cart->items->count(),
+            'qty' => $cart->getTotalItems(),
             'success' => 'Товар"' . $product->title . '"добавлен в корзину'
         ]);
     }

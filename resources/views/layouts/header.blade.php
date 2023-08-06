@@ -23,7 +23,7 @@
                     </li>
                     @if ($currentUser)
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Личный кабинет</a>
+                            <a class="nav-link" href="{{ route("orders") }}">Личный кабинет</a>
                         </li>
                         @hasrole('super-admin')
                             <li class="nav-item">
@@ -37,7 +37,7 @@
                         <li class="nav-item">
                             @if ($currentUser->cart)
                                 <a class="nav-link icon-header d-flex" href="{{ route("cart") }}"><img
-                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">{{ $currentUser->cart->items->count() }}</p></a>
+                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">{{ $currentUser->cart->getTotalItems() }}</p></a>
                             @else
                                 <a class="nav-link icon-header d-flex" href="{{ route("cart") }}"><img
                                         src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">0</p></a>
