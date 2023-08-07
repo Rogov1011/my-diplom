@@ -23,7 +23,7 @@
                     </li>
                     @if ($currentUser)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route("orders") }}">Личный кабинет</a>
+                            <a class="nav-link" href="{{ route("orders") }}">Мои заказы</a>
                         </li>
                         @hasrole('super-admin')
                             <li class="nav-item">

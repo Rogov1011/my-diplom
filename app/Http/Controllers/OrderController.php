@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderShipped;
+use App\Mail\OrderSuccessToAdmin;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\User;
@@ -37,8 +39,8 @@ class OrderController extends Controller
 
             $cart->delete();
 
-            // Mail::to($order->email)->send(new OrderSuccess($order));
-            // Mail::to('rogov_p.a@mail.ru')->send(new OrderSuccessToAdmin($order));
+            Mail::to($order->email)->send(new OrderShipped($order));
+            Mail::to('rogov_p.a@mail.ru')->send(new OrderSuccessToAdmin($order));
         } catch (Throwable $e) {
             report($e);
             return false;
@@ -62,10 +64,4 @@ class OrderController extends Controller
         ]);
     }
 
-    public function ordersAdmin()
-    {
-        return view('orders.indexAdmin', [
-            'orders' => Order::all()->sortByDesc('created_at'),
-        ]);
-    }
 }

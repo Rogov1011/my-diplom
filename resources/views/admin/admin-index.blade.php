@@ -32,7 +32,7 @@
                 <tr>
                     <td><a class="text-decoration-none text-dark" href="#">Заказы</a></td>
                     <td class="d-flex justify-content-end">
-                        <a href="{{ route("admin.orders") }}" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
+                        <a href="{{ route('orders.index') }}" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
                     </td>
                 </tr>
                 <tr>

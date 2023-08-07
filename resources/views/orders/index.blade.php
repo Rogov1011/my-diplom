@@ -4,6 +4,7 @@
 @section('content')
 
     <h1 class="my-5">Ваши заказы</h1>
+    @if ($orders->count())
     <div>
         <table class="table table-striped">
             <thead>
@@ -30,5 +31,8 @@
             </tbody>
         </table>
     </div>
+    @else
+        <h3 class="my-5">У вас ещё нет заказанных товаров</h3>
+    @endif
     <a href="/" class="btn btn-dark">Вернуться на главную</a>
 @endsection

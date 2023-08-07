@@ -9,7 +9,7 @@
             <p>{{ $products->description }}</p>
         </div>
     </div>
-    <h2 class="my-5">{{ $products->getPrice() }}</h2>
+    <h2 class="my-5">{{ priceFormat($products->price) }}</h2>
     @if ($products->quantity == 0)
         <h6 class="card-title fs-5 text-dark my-3"> нет в наличии</h6>
     @else

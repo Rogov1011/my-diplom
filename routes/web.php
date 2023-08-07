@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
@@ -79,7 +80,8 @@ Route::prefix("users")->middleware('role:super-admin')->group(function () {
     Route::get("/", [UserController::class, "index"])->name("users.index");
     Route::get("{user}/edit", [UserController::class, "edit"])->name("users.edit");
     Route::put("{user}/edit", [UserController::class, "update"])->name("users.update");
-    Route::get("orders", [OrderController::class, "ordersAdmin"])->name("admin.orders");
+    Route::resource('orders', AdminOrderController::class);
+    Route::get('change-order-status/{order}', [AdminOrderController::class, "changeStatus"])->name("order.change-status");
 });
 
 //Роли
@@ -89,7 +91,6 @@ Route::prefix("roles")->middleware('role:super-admin')->group(function () {
     Route::post("create", [RoleController::class, "store"])->name("roles.store");
     Route::get("{role}/edit", [RoleController::class, "edit"])->name("roles.edit");
     Route::put("{role}/edit", [RoleController::class, "update"])->name("roles.update");
-
 });
 //Заказы
 Route::get('checkout', [OrderController::class, "checkoutPage"])->name("app.checkout");

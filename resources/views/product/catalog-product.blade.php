@@ -31,7 +31,7 @@
                                 </div>
                                 <img src="{{ $product->getImage() }}" alt="" style="width:100px; height:100px">
                                 <div class="card-head">
-                                    <h3 class="card-title text-center text-dark">{{ $product->getPrice() }}</h3>
+                                    <h3 class="card-title text-center text-dark">{{ priceFormat($product->price) }}</h3>
                                 </div>
                                 <div class="container d-flex justify-content-between px-4">
                                     <a href="{{ route('showProducts', $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
