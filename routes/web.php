@@ -95,4 +95,4 @@ Route::prefix("roles")->middleware('role:super-admin')->group(function () {
 Route::get('checkout', [OrderController::class, "checkoutPage"])->name("app.checkout");
 Route::post('checkout', [OrderController::class, "storeOrder"])->name("app.storeOrder");
 Route::get('order/{order}/thankyou', [OrderController::class, "thankyouPage"])->name("app.order-thankyou");
-Route::get("orders", [OrderController::class, "orders"])->name("orders");
+Route::get("orders/status", [OrderController::class, "orders"])->name("orders");

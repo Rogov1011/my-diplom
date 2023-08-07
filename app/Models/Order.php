@@ -25,6 +25,10 @@ class Order extends Model
     {
         return $this->hasMany(OrderItem::class);
     }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     
     // public function promocodes()
@@ -37,6 +41,7 @@ class Order extends Model
     {
         $order = new static;
         $order->fill($input);
+        $order->user_id = auth()->user()->id;
         $order->email = $input['user_email'];
         $order->phone = $input['user_phone'] != null ? str_replace(['(', ')', '-', ' ', '+'], '', $input['user_phone']) : null;
         $order->save();

@@ -55,11 +55,10 @@ class OrderController extends Controller
         ]);
     }
 
-    public function Orders(Order $order)
+    public function orders()
     {
         return view('orders.index', [
-            'order' => $order,
-            'orders' => Order::all()->sortByDesc('created_at')
+            'orders' =>auth()->user()-> orders,
         ]);
     }
 
