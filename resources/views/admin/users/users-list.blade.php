@@ -22,11 +22,15 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->getRoles()}}</td>
-                <td class="d-flex justify-content-center">
+                <td class="d-flex justify-content-center gap-4">
                     <a href="{{ route("users.edit", $user) }}" class="btn btn-sm btn-success">Редактировать</a>
-                    <form action="" method="POST" class="mx-3">
-                        @csrf @method("DELETE")
-                        <button type="submit" class="btn btn-sm btn-dark">Заблокировать</button>
+                    <form action="{{ route('users.ban', $user) }}" method="POST">
+                        @csrf @method('PUT')
+                        @if ($user->is_ban)
+                        <button class="btn btn-sm btn-outline-dark">Разблокировать</button>
+                        @else
+                        <button class="btn btn-sm btn-dark">Заблокировать</button>
+                        @endif
                     </form>
                 </td>
             </tr>

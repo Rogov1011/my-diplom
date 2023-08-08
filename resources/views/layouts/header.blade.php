@@ -23,7 +23,7 @@
                     </li>
                     @if ($currentUser)
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route("orders") }}">Мои заказы</a>
+                            <a class="nav-link" href="{{ route('orders') }}">Мои заказы</a>
                         </li>
                         @hasrole('super-admin')
                             <li class="nav-item">
@@ -34,13 +34,19 @@
                 </ul>
                 <ul class="navbar-nav mx-4">
                     @if ($currentUser)
-                        <li class="nav-item">
+                        <li class="nav-item d-flex">
+                            <p class="text-light d-flex align-items-end icon-header">Корзина</p>
                             @if ($currentUser->cart)
-                                <a class="nav-link icon-header d-flex" href="{{ route("cart") }}"><img
-                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">{{ $currentUser->cart->getTotalItems() }}</p></a>
+                                <a class="nav-link icon-header d-flex" href="{{ route('cart') }}"><img
+                                        src="{{ asset('assets/icon/cart.png') }}">
+                                    <p class="header-cart my-2 text-light mx-1">
+                                        {{ $currentUser->cart->getTotalItems() }}</p>
+                                </a>
                             @else
-                                <a class="nav-link icon-header d-flex" href="{{ route("cart") }}"><img
-                                        src="{{ asset('assets/icon/cart.png') }}"><p class="header-cart my-2 text-light mx-1">0</p></a>
+                                <a class="nav-link icon-header d-flex" href="{{ route('cart') }}"><img
+                                        src="{{ asset('assets/icon/cart.png') }}">
+                                    <p class="header-cart my-2 text-light mx-1">0</p>
+                                </a>
                             @endif
                         </li>
                     @else
@@ -51,11 +57,10 @@
                         </li>
                     @endif
                 </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2 bg-light" type="search" placeholder="Поиск" aria-label="Поиск">
-                    <button class="btn btn-outline-light" type="submit">Поиск</button>
-                </form>
                 @if ($currentUser)
+                    <h3 class="nav-item text-light mx-3">
+                        {{ auth()->user()->name }}
+                    </h3>
                     <form class="mx-4" action="{{ route('auth.logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="nav-link icon-header"><img

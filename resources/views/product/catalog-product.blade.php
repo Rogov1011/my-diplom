@@ -11,8 +11,8 @@
             </div>
         @endif
         <div class="content">
-            <form action="" method="GET" class="mb-5 d-flex justify-content-center align-items-center">
-                <input type="text" name="search" placeholder="Введите запрос" class="col-6">
+            <form action="{{ route("searchProduct") }}" method="GET" class="mb-5 d-flex justify-content-center align-items-center">
+                <input type="text" name="searchCatalog" placeholder="Введите запрос" class="col-6">
                 <button class="btn btn-dark mx-3">Найти</button>
                 <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
             </form>

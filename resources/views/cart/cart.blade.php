@@ -21,7 +21,8 @@
                     <tbody>
                         @foreach ($cart->items as $item)
                             <tr>
-                                <td><img src="{{ $item->product->getImage() }}" alt="" style="width: 50px; height: 50px"></td>
+                                <td><img src="{{ $item->product->getImage() }}" alt=""
+                                        style="width: 50px; height: 50px"></td>
                                 <td>{{ $item->product->title }}</td>
                                 <td>{{ $item->price }}</td>
                                 <td>
@@ -49,9 +50,9 @@
                     </div>
                 @endif
 
-                {{-- @if ($cart->promocodes->first())
+                @if ($cart->promocodes->first())
                     @if ($cart->promocodes->contains($cart->promocodes->first()->id))
-                        <p>Промокод применён<a href="{{ route("cart-cancel-promocode") }}">отменить промокод</a></p>
+                        <p>Промокод применён<a href="{{ route('cart-cancel-promocode') }}">отменить промокод</a></p>
                     @endif
                 @else
                     <form action="{{ route('cart-apply-promocode') }}" method="POST">
@@ -60,11 +61,9 @@
                             <label for="">Введите промокод</label>
                             <input type="text" name="promocode" id="" class="form-control" placeholder="">
                         </div>
-                        <button class="btn btn-warning">Применить</button>
+                        <button class="btn btn-dark">Применить</button>
                     </form>
-                @endif --}}
-
-
+                @endif
             </div>
             <div class="col-lg-4 col-12">
                 <div class="col-5 border-3 bg-dark text-light d-flex flex-column justify-content-center align-items-center">
@@ -74,9 +73,6 @@
 
                     <a class="btn btn-sm btn-light text-dark my-2" href="{{ route('app.checkout') }}">Оформить заказ</a>
                 </div>
-
-
-
             </div>
         </div>
     @else

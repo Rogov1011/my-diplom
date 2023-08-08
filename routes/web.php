@@ -26,6 +26,7 @@ use Spatie\Permission\Models\Role;
 */
 
 Route::get('/', [AppController::class, 'mainPage'])->name("mainPage");
+Route::get('/searchCatalog', [AppController::class, 'searchProduct'])->name("searchProduct");
 Route::get('catalog/categories/{category}/', [AppController::class, 'getCategoriesBySubCategories'])->name('app.catalog-by-subCategories');
 Route::get('catalog/subCategories/{subcategory}/', [AppController::class, 'getProductsBySubCategories'])->name('app.catalog-by-products');
 Route::get("products/show/{product}", [AppController::class, "showProduct"])->name("showProducts");
@@ -66,6 +67,7 @@ Route::prefix("subcategories")->middleware('role:super-admin')->group(function (
 //Товары
 Route::prefix("products")->middleware('role:super-admin')->group(function () {
     Route::get("/", [ProductController::class, "productList"])->name("indexProduct");
+    Route::get("/search", [ProductController::class, "search"])->name("search");
     Route::get("create", [ProductController::class, "createProduct"])->name("products.create");
     Route::post("create", [ProductController::class, "storeProduct"])->name("products.store");
     Route::get("{productId}/edit", [ProductController::class, "editProduct"])->name("products.edit");
@@ -80,6 +82,7 @@ Route::prefix("users")->middleware('role:super-admin')->group(function () {
     Route::get("/", [UserController::class, "index"])->name("users.index");
     Route::get("{user}/edit", [UserController::class, "edit"])->name("users.edit");
     Route::put("{user}/edit", [UserController::class, "update"])->name("users.update");
+    Route::put("{user}/ban", [UserController::class, "banUser"])->name("users.ban");
     Route::resource('orders', AdminOrderController::class);
     Route::get('change-order-status/{order}', [AdminOrderController::class, "changeStatus"])->name("order.change-status");
 });
@@ -97,3 +100,7 @@ Route::get('checkout', [OrderController::class, "checkoutPage"])->name("app.chec
 Route::post('checkout', [OrderController::class, "storeOrder"])->name("app.storeOrder");
 Route::get('order/{order}/thankyou', [OrderController::class, "thankyouPage"])->name("app.order-thankyou");
 Route::get("orders/status", [OrderController::class, "orders"])->name("orders");
+
+//Промокоды
+Route::post('cart/set-promocode', [CartController::class, 'applyPromocode'])->name('cart-apply-promocode');
+Route::get('cart/unset-promocode', [CartController::class, 'cancelPromocode'])->name('cart-cancel-promocode');

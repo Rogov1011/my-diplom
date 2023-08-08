@@ -40,4 +40,12 @@ class AppController extends Controller
             "products" => $product
         ]);
     }
+
+    public function searchProduct(Subcategory $subcategory,Request $request){
+        $searchCatalog = $request->searchCatalog;
+        return view("product.catalog-product", [
+            'subcategory' => $subcategory,
+            "products"=> Product::where('title', 'LIKE', "%$searchCatalog%")->get()
+        ]);
+    }
 }

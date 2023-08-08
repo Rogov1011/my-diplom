@@ -7,14 +7,27 @@ use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
+use function Laravel\Prompts\search;
+
 class ProductController extends Controller
 {
     public function productList()
     {
+
         return view('product.product-list', [
             "subCategories"=> Subcategory::all()->sortBy("name"),
             "category"=> Category::all()->sortBy("name"),
             "products"=> Product::all()->sortBy("name")
+        ]);
+
+    }
+
+    public function search(Request $request){
+        $search = $request->search;
+        return view('product.product-list', [
+            "subCategories"=> Subcategory::all()->sortBy("name"),
+            "category"=> Category::all()->sortBy("name"),
+            "products"=> Product::where('title', 'LIKE', "%$search%")->get()
         ]);
     }
 

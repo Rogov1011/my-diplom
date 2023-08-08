@@ -32,4 +32,14 @@ class UserController extends Controller
 
         return redirect()->route("users.index");
     }
+
+    public function banUser(User $user)
+    {
+        if ($user->is_ban) {
+            $user->update(["is_ban" => 0]);
+        } else {
+            $user->update(["is_ban" => 1]);
+        }
+        return back();
+    }
 }
