@@ -26,11 +26,14 @@ use Spatie\Permission\Models\Role;
 |
 */
 
+
 Route::get('/', [AppController::class, 'mainPage'])->name("mainPage");
 Route::get('/searchCatalog', [AppController::class, 'searchProduct'])->name("searchProduct");
 Route::get('catalog/categories/{category}/', [AppController::class, 'getCategoriesBySubCategories'])->name('app.catalog-by-subCategories');
 Route::get('catalog/subCategories/{subcategory}/', [AppController::class, 'getProductsBySubCategories'])->name('app.catalog-by-products');
 Route::get("products/show/{product}", [AppController::class, "showProduct"])->name("showProducts");
+Route::get("banPage", [AppController::class, "isBan"])->name("banPage");
+
 Route::post("logout", [AuthController::class, "logout"])->name("auth.logout");
 
 Route::middleware("guest")->group(function () {
@@ -39,7 +42,7 @@ Route::middleware("guest")->group(function () {
     Route::post("login", [AuthController::class, "login"])->name("auth.login");
 });
 
-Route::middleware('role:user|super-admin')->group(function () {
+Route::middleware(['role:user|super-admin', "isBan"])->group(function () {
     Route::get("add-to-cart/{product}/", [CartController::class, 'addToCart'])->name('cart.add-product');
     Route::get("cart", [CartController::class, 'cartPage'])->name('cart');
     Route::put("cart/items/{item}/edit", [CartController::class, 'changeQty'])->name('cart.items.qty-update');
@@ -100,7 +103,7 @@ Route::middleware('role:super-admin')->group(function () {
         Route::put("{role}/edit", [RoleController::class, "update"])->name("roles.update");
     });
 });
-Route::middleware('role:user|super-admin')->group(function () {
+Route::middleware(['role:user|super-admin', "isBan"])->group(function () {
     //Заказы
     Route::get('checkout', [OrderController::class, "checkoutPage"])->middleware('role:user|super-admin')->name("app.checkout");
     Route::post('checkout', [OrderController::class, "storeOrder"])->middleware('role:user|super-admin')->name("app.storeOrder");

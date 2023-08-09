@@ -48,4 +48,8 @@ class AppController extends Controller
             "products"=> Product::where('title', 'LIKE', "%$searchCatalog%")->get()
         ]);
     }
+
+    public function isBan(){
+        return view("banPage");
+    }
 }

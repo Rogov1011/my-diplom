@@ -3,20 +3,23 @@
 @section('title', 'Главная страница')
 
 @section('content')
-    <h1 class="my-5 text-center">Категории товаров</h1>
     @if (session('success_register'))
         <div class="alert alert-dark col-6 message_register">
             {{ session('success_register') }}
         </div>
     @endif
     <div class="content">
-        <form action="" method="GET" class="mb-5 d-flex justify-content-center align-items-center">
-            <input type="text" name="search" placeholder="Введите запрос" class="col-6">
-            <button class="btn btn-dark mx-3">Найти</button>
-            <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
-        </form>
+        <div class="owl-carousel owl-theme my-2 z-0" id="slider">
+            <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-finland_2.webp') }}" alt=""></div>
+            <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-steher.webp') }}" alt=""></div>
+        </div>
+        <div class="promo d-flex my-4"><img src="{{ asset('assets/images/promo.jpg') }}" alt="">
+            <h2 class="mx-4 text-danger">LETO</h2>
+            <h3>Скидка по промокоду 500 рублей</h3>
+        </div>
+        <h3 class="my-2 d-flex justify-content-center">Категории товаров</h3>
         <tbody>
-            <div class="row">
+            <div class="row my-4">
                 @foreach ($categories as $category)
                     <div class="col-lg-3">
                         <div class="card mb-5 col-12 d-flex justify-content-center align-items-center">

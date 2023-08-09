@@ -80,4 +80,12 @@ $(document).ready(function () {
             method: "GET",
         });
     });
+
+    $("#slider").owlCarousel({
+        items: 2,
+        loop: true,
+        autoplay: true,
+        autoplayTimeout: 2500,
+        smartSpeed: 1000,
+    })
 });

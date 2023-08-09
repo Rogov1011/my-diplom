@@ -1,5 +1,14 @@
+
 .sticky-message{
     position: fixed;
     top: 100px;
     right: 100px;
+}
+.containerBan{
+    width: 100%;
+    height: 850px;
+}
+.promo img{
+    width: 500px;
+    height: 60px;
 }

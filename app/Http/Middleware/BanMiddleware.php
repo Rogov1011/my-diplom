@@ -17,7 +17,7 @@ class BanMiddleware
     {
         $user = auth()->user();
         if($user->is_ban){
-            return abort(403);
+            return redirect()->route("banPage");
         } 
         return $next($request);
     }

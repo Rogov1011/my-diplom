@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.footer {
+    background: #343a40;
+    padding: 30px 0px;
+    font-family: "Play", sans-serif;
+    text-align: center;
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.contentHead {
+    width: 100%;
+    margin: 1% 0%;
+    padding: 0.6% 0%;
+    color: #343a40;
+    font-size: 0.8em;
+}
+
+.content a {
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+
+.contentHead a:hover {
+    color: #fff;
+}
+
+.content ul {
+    width: 100%;
+}
+
+.content ul li {
+    display: inline-block;
+    margin: 0px 30px;
+}
+.content ul li:hover{
+    transform:scale(1.25);
+}
+
+.contentHead a i {
+    font-size: 2em;
+    margin: 0% 1%;
+}
+
+.contentHead a i img:hover{
+    transform:scale(1.25);
+}
