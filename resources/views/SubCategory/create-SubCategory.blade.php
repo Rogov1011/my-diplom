@@ -1,6 +1,6 @@
 @extends('app')
 
-@section('title', __('Новая категория'))
+@section('title', 'Новая подкатегория')
 @section('content')
     <div class="d-flex justify-content-between align-items-center my-5">
         @if ($categories->count())

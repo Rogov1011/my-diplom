@@ -52,7 +52,7 @@
 
                 @if ($cart->promocodes->first())
                     @if ($cart->promocodes->contains($cart->promocodes->first()->id))
-                        <p>Промокод применён<a href="{{ route('cart-cancel-promocode') }}">отменить промокод</a></p>
+                        <p>Промокод успешно применён<a href="{{ route('cart-cancel-promocode') }}" class="mx-2 btn btn-sm btn-dark">отменить промокод</a></p>
                     @endif
                 @else
                     <form action="{{ route('cart-apply-promocode') }}" method="POST">
