@@ -80,12 +80,23 @@ $(document).ready(function () {
             method: "GET",
         });
     });
-
+    //OwlCarusel
     $("#slider").owlCarousel({
         items: 2,
         loop: true,
         autoplay: true,
+        mouseDrag: false,
         autoplayTimeout: 2500,
         smartSpeed: 1000,
+    })
+
+    //ImageFullscreen
+    $('.max_min').on('click', function(e){
+        e.preventDefault();
+        $('.pupupFullscreen').fadeIn(1000);
+    })
+    $('.full_img').on('click', function(e){
+        e.preventDefault();
+        $('.pupupFullscreen').fadeOut(1000);
     })
 });

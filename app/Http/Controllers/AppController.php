@@ -47,7 +47,8 @@ class AppController extends Controller
     public function showProduct(Product $product)
     {
         return view("product.product-show", [
-            "products" => $product
+            "products" => $product,
+            "images" => Image::all()->sortBy("name")
         ]);
     }
 

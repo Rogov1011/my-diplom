@@ -2,14 +2,20 @@
 
 @section('title', 'Товар')
 @section('content')
-    <div class="d-flex justify-content-between align-items-center my-5">
-        <img src="{{ $products->getImage() }}" alt="" style="width: 300px">
-        <div class="container">
+    <div class="d-flex justify-content-between align-items-center">
+        <img class="max_min" src="{{ $products->getImage() }}" alt="" style="width: 400px; height: 400px">
+        <div class="container mx-4 col-7">
             <h2 class="my-5">{{ $products->title }}</h2>
             <p>{{ $products->description }}</p>
+            <div class="owl-carousel owl-theme z-0 showimages" id="slider">
+                    <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-wolfcraft.webp') }}"
+                            alt=""></div>
+                    <div class="slyder_picture_block"><img src="{{ asset('assets/images/banner_stanki.webp') }}" alt="">
+                    </div>
+            </div>
         </div>
     </div>
-    <h2 class="my-5">{{ priceFormat($products->price) }}</h2>
+    <h2 class="my-2">{{ priceFormat($products->price) }}</h2>
     @if ($products->quantity == 0)
         <h6 class="card-title fs-5 text-dark my-3"> нет в наличии</h6>
     @else
@@ -27,8 +33,14 @@
                 корзину</a>
         @endif
     @else
-        <button class="btn btn-dark open-popup-auth">В корзину</button>
+        <button class="btn btn-dark open-popup-auth mx-2">В корзину</button>
     @endif
+    <button class="btn btn-dark open-popup-auth" onclick=history.back()>Назад</button>
+    <div class="pupupFullscreen">
+        <div class=".pupup_content_full d-flex justify-content-center">
+            <div class="full_img"><img class="max_min" src="{{ $products->getImage() }}" alt="" style="width: 800px; height: 800px"></div>
+        </div>
+    </div>
     @if (session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

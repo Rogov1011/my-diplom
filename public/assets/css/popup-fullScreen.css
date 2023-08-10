@@ -1,0 +1,19 @@
+.pupupFullscreen{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    top: 0;
+    left: 0;
+    display: none;
+}
+.pupup_content_full{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 1000px;
+    height: 700px;
+}
+.full_img{
+    margin-top: 100px;
+}
