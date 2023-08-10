@@ -6,6 +6,7 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\PromocodeController;
@@ -33,6 +34,7 @@ Route::get('catalog/categories/{category}/', [AppController::class, 'getCategori
 Route::get('catalog/subCategories/{subcategory}/', [AppController::class, 'getProductsBySubCategories'])->name('app.catalog-by-products');
 Route::get("products/show/{product}", [AppController::class, "showProduct"])->name("showProducts");
 Route::get("banPage", [AppController::class, "isBan"])->name("banPage");
+Route::get("contacts", [AppController::class, "contacts"])->name("contacts");
 
 Route::post("logout", [AuthController::class, "logout"])->name("auth.logout");
 
@@ -102,6 +104,9 @@ Route::middleware('role:super-admin')->group(function () {
         Route::get("{role}/edit", [RoleController::class, "edit"])->name("roles.edit");
         Route::put("{role}/edit", [RoleController::class, "update"])->name("roles.update");
     });
+
+    //Картинки на главную
+    Route::resource('images', ImageController::class);
 });
 Route::middleware(['role:user|super-admin', "isBan"])->group(function () {
     //Заказы

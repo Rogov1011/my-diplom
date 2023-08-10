@@ -33,6 +33,13 @@
                         </td>
                     </tr>
                     <tr>
+                        <td><a class="text-decoration-none text-dark" href="{{ route('images.index') }}">Картинки на главный экран</a></td>
+                        <td class="d-flex justify-content-end">
+                            <a href="{{ route('images.create') }}" class="btn btn-sm btn-dark mx-2">Создать</a>
+                            <a href="{{ route('images.index') }}" class="btn btn-sm btn-secondary mx-2">Просмотреть</a>
+                        </td>
+                    </tr>
+                    <tr>
                         <td><a class="text-decoration-none text-dark" href="{{ route('promocodes.index') }}">Промокоды</a></td>
                         <td class="d-flex justify-content-end">
                             <a href="{{ route('promocodes.create') }}" class="btn btn-sm btn-dark mx-2">Создать</a>

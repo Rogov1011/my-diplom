@@ -10,13 +10,32 @@
     @endif
     <div class="content">
         <div class="owl-carousel owl-theme my-2 z-0" id="slider">
-            <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-finland_2.webp') }}" alt=""></div>
-            <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-steher.webp') }}" alt=""></div>
+            @if ($images->count())
+                @foreach ($images as $image)
+                    <div class="slyder_picture_block">
+                        <img class="d-flex" src="{{ $image->getImage() }}" alt="" style="width: 645px; height:300px">
+                    </div>
+                @endforeach
+            @else
+                <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-finland_2.webp') }}" alt="">
+                </div>
+                <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-steher.webp') }}" alt="">
+                </div>
+            @endif
         </div>
-        <div class="promo d-flex my-4"><img src="{{ asset('assets/images/promo.jpg') }}" alt="">
-            <h2 class="mx-4 text-danger">LETO</h2>
-            <h3>Скидка по промокоду 500 рублей</h3>
-        </div>
+        @if ($promocodes->count())
+            <div class="promo d-flex my-4"><img src="{{ asset('assets/images/promo.jpg') }}" alt="">
+                <h2 class="mx-4 text-danger">
+                    @foreach ($promocodes as $promocode)
+                        {{ $promocode->code }}
+                    @endforeach
+                </h2>
+                <h3 class="my-1">Скидка по промокоду @foreach ($promocodes as $promocode)
+                        {{ priceFormat($promocode->discount) }}
+                    @endforeach
+                </h3>
+            </div>
+        @endif
         <h3 class="my-2 d-flex justify-content-center">Категории товаров</h3>
         <tbody>
             <div class="row my-4">
@@ -27,28 +46,12 @@
                             <div class="card-head">
                                 <h6 class="card-title text-center fs-5">{{ $category->name }}</h6>
                             </div>
-                            <a href="{{ route("app.catalog-by-subCategories", $category) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                            <a href="{{ route('app.catalog-by-subCategories', $category) }}"
+                                class="btn btn-sm btn-dark my-2">Перейти</a>
                         </div>
                     </div>
                 @endforeach
             </div>
-            {{-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group me-2" role="group" aria-label="First group">
-                @if ($products->count() > 11)
-                    @if ($products->currentPage() > 1)
-                        <a href="{{ $products->previousPageUrl() }}" type="button" class="btn btn-lg btn-primary">
-                            <</a>
-                    @endif
-                    @for ($i = 1; $i <= $products->lastPage(); $i++)
-                        <a href="{{ $products->url($i) }}" type="button"
-                            class="btn btn-lg @if ($i == $products->currentPage()) btn-primary @else btn-outline-primary @endif">{{ $i }}</a>
-                    @endfor
-                    @if ($products->currentPage() != $products->lastPage())
-                        <a href="{{ $products->nextPageUrl() }}" type="button" class="btn btn-lg btn-primary">></a>
-                    @endif
-                @endif
-            </div>
-        </div> --}}
         </tbody>
     </div>
 @endsection

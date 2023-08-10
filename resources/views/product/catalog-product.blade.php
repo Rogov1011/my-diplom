@@ -3,7 +3,6 @@
 @section('title', 'Главная страница')
 
 @section('content')
-    <h1 class="my-5 text-center">Категории товаров</h1>
     @if ($products->count())
         @if (session('success_register'))
             <div class="alert alert-dark col-6 message_register">
@@ -11,7 +10,36 @@
             </div>
         @endif
         <div class="content">
-            <form action="{{ route("searchProduct") }}" method="GET" class="mb-5 d-flex justify-content-center align-items-center">
+            <div class="owl-carousel owl-theme my-2 z-0" id="slider">
+                @if ($images->count())
+                    @foreach ($images as $image)
+                        <div class="slyder_picture_block">
+                            <img class="d-flex" src="{{ $image->getImage() }}" alt=""
+                                style="width: 645px; height:300px">
+                        </div>
+                    @endforeach
+                @else
+                    <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-finland_2.webp') }}"
+                            alt=""></div>
+                    <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-steher.webp') }}" alt="">
+                    </div>
+                @endif
+            </div>
+            @if ($promocodes->count())
+                <div class="promo d-flex my-4"><img src="{{ asset('assets/images/promo.jpg') }}" alt="">
+                    <h2 class="mx-4 text-danger">
+                        @foreach ($promocodes as $promocode)
+                            {{ $promocode->code }}
+                        @endforeach
+                    </h2>
+                    <h3 class="my-1">Скидка по промокоду @foreach ($promocodes as $promocode)
+                            {{ priceFormat($promocode->discount) }}
+                        @endforeach
+                    </h3>
+                </div>
+            @endif
+            <form action="{{ route('searchProduct') }}" method="GET"
+                class="mb-5 d-flex justify-content-center align-items-center">
                 <input type="text" name="searchCatalog" placeholder="Введите запрос" class="col-6">
                 <button class="btn btn-dark mx-3">Найти</button>
                 <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
@@ -34,13 +62,15 @@
                                     <h3 class="card-title text-center text-dark">{{ priceFormat($product->price) }}</h3>
                                 </div>
                                 <div class="container d-flex justify-content-between px-4">
-                                    <a href="{{ route('showProducts', $product) }}" class="btn btn-sm btn-dark my-2">Перейти</a>
+                                    <a href="{{ route('showProducts', $product) }}"
+                                        class="btn btn-sm btn-dark my-2">Перейти</a>
                                     @if (auth()->user())
                                         @if ($product->quantity == 0)
                                             <button class="btn btn-sm btn-light my-2">В
                                                 корзину</button>
                                         @else
-                                            <a href="{{route('cart.add-product', $product)}}" type="button" class="btn btn-sm btn-dark my-2 add-to-cart">В
+                                            <a href="{{ route('cart.add-product', $product) }}" type="button"
+                                                class="btn btn-sm btn-dark my-2 add-to-cart">В
                                                 корзину</a>
                                         @endif
                                     @else
@@ -60,25 +90,8 @@
                     @endif
                 @endforeach
             </div>
-            {{-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-            <div class="btn-group me-2" role="group" aria-label="First group">
-                @if ($products->count() > 11)
-                    @if ($products->currentPage() > 1)
-                    <a href="{{ $products->previousPageUrl() }}" type="button" class="btn btn-lg btn-primary">
-                        <</a>
-                        @endif
-                        @for ($i = 1; $i <= $products->lastPage(); $i++)
-                        <a href="{{ $products->url($i) }}" type="button"
-                            class="btn btn-lg @if ($i == $products->currentPage()) btn-primary @else btn-outline-primary @endif">{{ $i }}</a>
-                            @endfor
-                    @if ($products->currentPage() != $products->lastPage())
-                    <a href="{{ $products->nextPageUrl() }}" type="button" class="btn btn-lg btn-primary">></a>
-                    @endif
-                    @endif
-                </div>
-            </div> --}}
         @else
-            <h3>Ещё нет добавленных товаров</h3>
+            <h3 class="d-flex justify-content-center my-3">Ещё нет добавленных товаров</h3>
     @endif
     </div>
 @endsection

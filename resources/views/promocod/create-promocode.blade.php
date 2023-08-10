@@ -3,7 +3,6 @@
 @section('title', 'Новый промокод')
 @section('content')
     <div class="d-flex justify-content-between align-items-center my-5">
-        @if ($promocodes->count())
         <h2>Новый промокод</h2>
     </div>
 
@@ -34,7 +33,4 @@
             <button class="btn btn-dark my-5">Добавить</button>
         </form>
     </div>
-    @else
-    <h3>Добавьте сначала промокод</h3>
-    @endif
 @endsection

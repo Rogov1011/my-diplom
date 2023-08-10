@@ -19,7 +19,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">О нас</a>
+                        <a class="nav-link" href="{{ route("contacts") }}">О нас</a>
                     </li>
                     @if ($currentUser)
                         <li class="nav-item">
