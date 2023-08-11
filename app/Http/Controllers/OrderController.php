@@ -6,6 +6,7 @@ use App\Mail\OrderShipped;
 use App\Mail\OrderSuccessToAdmin;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -27,15 +28,19 @@ class OrderController extends Controller
 
         try {
             $cart = auth()->user()->cart;
-
+    
             $order = Order::add($request->all());
-
+    
             foreach ($cart->items as $item) {
                 OrderItem::add($item, $order);
             }
-
+    
             $order->total_sum = $cart->getTotalPrice();
             $order->save();
+            foreach($cart->items as $item){
+               $product = Product::find($item->product->id);
+               $product->update(["quantity"=>$product->quantity - $item->quantity]);
+            }
 
             $cart->delete();
 

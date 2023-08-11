@@ -58,9 +58,9 @@
                     @endif
                 </ul>
                 @if ($currentUser)
-                    <h3 class="nav-item text-light mx-3">
+                    <h6 class="nav-item text-light mx-2 my-1">
                         {{ auth()->user()->name }}
-                    </h3>
+                    </h6>
                     <form class="mx-4" action="{{ route('auth.logout') }}" method="POST">
                         @csrf
                         <button type="submit" class="nav-link icon-header"><img

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/popup-catalog.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/popup-catalog-subcategory.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/popup-auth.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/popup-fullScreen.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
@@ -18,8 +19,12 @@
 <body>
     @include('layouts.header')
     @include('layouts.popup-catalog')
+    @include('layouts.popup-catalog-subcategory')
     @include('auth.popup-auth')
     <main>
+        <div class="preloader">
+            <div class="preloader__image"><img src="{{ asset('assets/icon/Длинные линии.gif') }}" alt=""></div>
+        </div>
         <div class="container">
             @yield('content')
         </div>

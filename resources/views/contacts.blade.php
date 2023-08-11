@@ -36,6 +36,10 @@
                 <h4>Телефон для связи:</h4>
                 <h4 class="mx-2">8 (4932) 220-230</h4>
             </div>
+            <div class="d-flex my-4">
+                <h4>Email:</h4>
+                <h4 class="mx-2">rogov_p.a@mail.ru</h4>
+            </div>
             <a class="navbar-brand d-flex my-5" href="{{ route('mainPage') }}"><img class="rounded-3"
                 src="{{ asset('assets/icon/logo.png') }}" width="300px"></a>
         </div>

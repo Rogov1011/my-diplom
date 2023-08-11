@@ -11,7 +11,7 @@
         @endif
         <div class="content">
             <div class="owl-carousel owl-theme my-2 z-0" id="slider">
-                @if ($images->count())
+                 @if ($images->count())
                     @foreach ($images as $image)
                         <div class="slyder_picture_block">
                             <img class="d-flex" src="{{ $image->getImage() }}" alt=""
@@ -41,8 +41,9 @@
             <form action="{{ route('searchProduct') }}" method="GET"
                 class="mb-5 d-flex justify-content-center align-items-center">
                 <input type="text" name="searchCatalog" placeholder="Введите запрос" class="col-6">
-                <button class="btn btn-dark mx-3">Найти</button>
-                <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
+                <button class="btn btn-sm btn-dark mx-1">Найти</button>
+                <a class="mx-1 btn btn-sm btn-dark text-decoration-none text-light" href="#" onclick=history.back()>Назад</a>
+                <a class="mx-1 btn btn-sm btn-dark text-decoration-none text-light" href="{{ route('searchProduct') }}">Все товары</a>
             </form>
             <div class="card-head">
                 <h3 class="card-title text-center my-5">{{ $subcategory->name }}</h3>

@@ -36,7 +36,6 @@
                 </h3>
             </div>
         @endif
-        <h3 class="my-2 d-flex justify-content-center">Категории товаров</h3>
         <tbody>
             <div class="row my-4">
                 @foreach ($categories as $category)

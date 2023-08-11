@@ -1,0 +1,44 @@
+.popup-menu-catalog-subcategory{
+    position: fixed;
+    top: 0;
+    left: 450px;
+    background-color: #212529;
+    width: 450px;
+    height: 100vh;
+    z-index: 1;
+    opacity: 0.99;
+    display: none;
+}
+.popup-subcategory_header{
+    height: 71px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #212529;
+    padding: 0 10px;
+}
+.popup-menu-subcategory-close{
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+.popup-subcategory_content{
+    height: 100vh;
+    background-color: #343a40;
+    color: white;
+}
+.popup-subcategory_content_spisok{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    font-size: 20px;
+    margin: 0 20px;
+    padding: 0;
+}
+.popup-subcategory_content_spisok li{
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+    padding: 0;
+}

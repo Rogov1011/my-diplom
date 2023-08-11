@@ -7,11 +7,11 @@
         <div class="container mx-4 col-7">
             <h2 class="my-5">{{ $products->title }}</h2>
             <p>{{ $products->description }}</p>
-            <div class="owl-carousel owl-theme z-0 showimages" id="slider">
-                    <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-wolfcraft.webp') }}"
-                            alt=""></div>
-                    <div class="slyder_picture_block"><img src="{{ asset('assets/images/banner_stanki.webp') }}" alt="">
-                    </div>
+            <div class="owl-carousel owl-theme z-0" id="slider">
+                <div class="slyder_picture_block"><img src="{{ asset('assets/images/b-wolfcraft.webp') }}" alt="">
+                </div>
+                <div class="slyder_picture_block"><img src="{{ asset('assets/images/banner_stanki.webp') }}" alt="">
+                </div>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
             <button class="btn btn-light">В
                 корзину</button>
         @else
-            <a href="{{route('cart.add-product', $products)}}" type="button" class="btn btn-dark add-to-cart">В
+            <a href="{{ route('cart.add-product', $products) }}" type="button" class="btn btn-dark add-to-cart">В
                 корзину</a>
         @endif
     @else
@@ -38,7 +38,8 @@
     <button class="btn btn-dark open-popup-auth" onclick=history.back()>Назад</button>
     <div class="pupupFullscreen">
         <div class=".pupup_content_full d-flex justify-content-center">
-            <div class="full_img"><img class="max_min" src="{{ $products->getImage() }}" alt="" style="width: 800px; height: 800px"></div>
+            <div class="full_img"><img class="max_min" src="{{ $products->getImage() }}" alt=""
+                    style="width: 800px; height: 800px"></div>
         </div>
     </div>
     @if (session('success'))

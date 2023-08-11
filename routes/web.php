@@ -35,6 +35,7 @@ Route::get('catalog/subCategories/{subcategory}/', [AppController::class, 'getPr
 Route::get("products/show/{product}", [AppController::class, "showProduct"])->name("showProducts");
 Route::get("banPage", [AppController::class, "isBan"])->name("banPage");
 Route::get("contacts", [AppController::class, "contacts"])->name("contacts");
+Route::get("user_agreement", [AppController::class, "user_agreement"])->name("user_agreement");
 
 Route::post("logout", [AuthController::class, "logout"])->name("auth.logout");
 

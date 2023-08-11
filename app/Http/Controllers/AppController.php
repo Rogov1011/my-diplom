@@ -56,6 +56,8 @@ class AppController extends Controller
     {
         $searchCatalog = $request->searchCatalog;
         return view("product.catalog-product", [
+            "promocodes" => Promocode::all()->sortBy("name"),
+            "images" => Image::all()->sortBy("name"),
             'subcategory' => $subcategory,
             "products" => Product::where('title', 'LIKE', "%$searchCatalog%")->get()
         ]);
@@ -69,5 +71,10 @@ class AppController extends Controller
     public function contacts()
     {
         return view("contacts");
+    }
+
+    public function user_agreement()
+    {
+        return view("user_agreement");
     }
 }

@@ -14,8 +14,8 @@
             <div class="content">
                 <ul>
                     <li><a class="text-light" href="#">Контакты</a></li>
-                    <li><a class="text-light" href="#">Email</a></li>
-                    <li><a class="text-light" href="#">О нас</a></li>
+                    <li><a class="text-light" href="{{ route("contacts") }}">О нас</a></li>
+                    <li><a class="text-light" href="{{ route("user_agreement") }}">Пользовательское соглашение</a></li>
                     <li><a class="text-light" href="#">Сертификаты</a></li>
                     <li><a class="text-light" href="#">Способы оплаты</a></li>
                 </ul>

@@ -22,6 +22,18 @@ $(document).ready(function () {
         );
     });
 
+    //Модельное окно с левой стороны Подкатегория
+    let $popup_subcategory_open = $(".open-subcategory");
+    let $popup_subcategory_closed = $(".container");
+
+    $popup_subcategory_open.on("mouseover", function () {
+        $(".popup-menu-catalog-subcategory").fadeIn(300)
+    });
+
+    $popup_subcategory_closed.on("mouseover", function () {
+        $(".popup-menu-catalog-subcategory").fadeOut(300)
+    });
+
     //Модельное окно авторизации
     $(".open-popup-auth").on("click", function () {
         let pupup = $(".pupup");
@@ -99,4 +111,11 @@ $(document).ready(function () {
         e.preventDefault();
         $('.pupupFullscreen').fadeOut(1000);
     })
+
+    //прелодадер
+    $(window).on('load', function() {
+        $('.preloader').fadeOut().end().delay(1000);
+      });
+
+      
 });
