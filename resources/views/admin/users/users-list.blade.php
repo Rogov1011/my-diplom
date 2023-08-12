@@ -22,6 +22,7 @@
                 <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->getRoles()}}</td>
+                @if ($user->id != auth()->user()->id)
                 <td class="d-flex justify-content-center gap-4">
                     <a href="{{ route("users.edit", $user) }}" class="btn btn-sm btn-success">Редактировать</a>
                     <form action="{{ route('users.ban', $user) }}" method="POST">
@@ -33,6 +34,7 @@
                         @endif
                     </form>
                 </td>
+                @endif
             </tr>
             @endforeach
         </tbody>

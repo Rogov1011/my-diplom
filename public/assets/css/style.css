@@ -48,3 +48,10 @@ main{
   .loaded .preloader {
     display: none;
   }
+
+  .imageShow{
+   margin-top: 100px;
+  }
+  .imageSlider{
+   margin-top: 50px;
+  }

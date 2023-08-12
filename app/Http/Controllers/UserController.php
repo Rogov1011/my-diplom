@@ -28,6 +28,9 @@ class UserController extends Controller
         $request->validate([
             "name" => 'required'
         ]);
+        $user->update([
+            'name'=> $request->input('name')
+        ]);
         $user->syncRoles($request->input('roles'));
 
         return redirect()->route("users.index");

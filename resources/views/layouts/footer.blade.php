@@ -1,23 +1,15 @@
 <body>
     <footer>
         <div class="footer">
-            <div class="contentHead">
-                <a href="#"><i class="fa fa-facebook"><img src="{{ asset('assets/icon/telegram.png') }}"
-                            alt=""></i></a>
-                <a href="#"><i class="fa fa-instagram"><img src="{{ asset('assets/icon/vkontakte.png') }}"
-                            alt=""></i></a>
-                <a href="#"><i class="fa fa-youtube"><img src="{{ asset('assets/icon/whatsapp.png') }}"
-                            alt=""></i></a>
-                <a href="#"><i class="fa fa-twitter"><img src="{{ asset('assets/icon/youtube.png') }}"
-                            alt=""></i></a>
-            </div>
-            <div class="content">
+            <a class="navbar-brand" href="{{ route('mainPage') }}"><img class="rounded-3"
+                src="{{ asset('assets/icon/logo.png') }}" width="250px"></a>
+            <div class="content my-4">
                 <ul>
-                    <li><a class="text-light" href="#">Контакты</a></li>
                     <li><a class="text-light" href="{{ route("contacts") }}">О нас</a></li>
                     <li><a class="text-light" href="{{ route("user_agreement") }}">Пользовательское соглашение</a></li>
-                    <li><a class="text-light" href="#">Сертификаты</a></li>
-                    <li><a class="text-light" href="#">Способы оплаты</a></li>
+                    <li><a class="text-light" href="{{ route("warranty") }}">Гарантия</a></li>
+                    <li><a class="text-light" href="{{ route("sertificat") }}">Сертификаты</a></li>
+                    <li><a class="text-light" href="{{ route("payment") }}">Способы оплаты</a></li>
                 </ul>
             </div>
             <div class="contentFoot text-light">

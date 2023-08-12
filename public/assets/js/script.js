@@ -27,8 +27,20 @@ $(document).ready(function () {
     let $popup_subcategory_closed = $(".container");
 
     $popup_subcategory_open.on("mouseover", function () {
+        let $this = $(this);
         $(".popup-menu-catalog-subcategory").fadeIn(300)
+        $.ajax({
+            url: window.location.origin + "/categories/" + $this.attr("data-id") + "/sub",
+            method: "GET",
+            success: function(res){
+                $(".popup-subcategory_content_spisok").html('');
+                 for (i = 0; i < res.length; i++){
+                    $(".popup-subcategory_content_spisok").append(`<ol class="text-light text-decoration-none subcategory">` + res[i] + "</ol>")
+                }
+            }
+        })
     });
+
 
     $popup_subcategory_closed.on("mouseover", function () {
         $(".popup-menu-catalog-subcategory").fadeOut(300)

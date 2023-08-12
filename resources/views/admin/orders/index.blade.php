@@ -45,18 +45,18 @@
                         <td>{{ priceFormat($order->total_sum) }}</td>
                         <td>
                             <form action="{{ route("order.change-status", $order) }}" method="GET">
-                                <select name="status" id="" class="form-control bg-dark text-light changeStatus">
+                                <select name="status" id="" class="changeStatus">
                                     <option value="in_process" @if ($order->status == "in_process") selected @endif>
-                                        {{ __('statuses.in_process') }}
+                                        {{ __('В обработке') }}
                                     </option>
                                     <option class="bg-light text-dark" value="finished" @if ($order->status == "finished") selected @endif>>
-                                        {{ __('statuses.finished') }}
+                                        {{ __('Завершен') }}
                                     </option>
                                     <option class="bg-light text-dark" value="canceled" @if ($order->status == "canceled") selected @endif>>
-                                        {{ __('statuses.canceled') }}
+                                        {{ __('Отменен') }}
                                     </option>
                                     <option class="bg-light text-dark" value="paid" @if ($order->status == "paid") selected @endif>>
-                                        {{ __('statuses.paid') }}
+                                        {{ __('Оплачен') }}
                                     </option>
                                 </select>
                             </form>

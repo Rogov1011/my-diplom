@@ -63,6 +63,14 @@ class AppController extends Controller
         ]);
     }
 
+    public function subcategoryPupop(Category $category){
+        $subcategory = [];
+        foreach($category->subcategories as $subcat){
+            $subcategory[] = $subcat->name;
+        }
+        return response()->json($subcategory);
+    }
+
     public function isBan()
     {
         return view("banPage");
@@ -76,5 +84,20 @@ class AppController extends Controller
     public function user_agreement()
     {
         return view("user_agreement");
+    }
+
+    public function sertificat()
+    {
+        return view("sertificats");
+    }
+
+    public function payment()
+    {
+        return view("payment");
+    }
+
+    public function warranty()
+    {
+        return view("warranty");
     }
 }

@@ -36,6 +36,10 @@ Route::get("products/show/{product}", [AppController::class, "showProduct"])->na
 Route::get("banPage", [AppController::class, "isBan"])->name("banPage");
 Route::get("contacts", [AppController::class, "contacts"])->name("contacts");
 Route::get("user_agreement", [AppController::class, "user_agreement"])->name("user_agreement");
+Route::get("sertificat", [AppController::class, "sertificat"])->name("sertificat");
+Route::get("payment", [AppController::class, "payment"])->name("payment");
+Route::get("warranty", [AppController::class, "warranty"])->name("warranty");
+Route::get("categories/{category}/sub", [AppController::class, "subcategoryPupop"]);
 
 Route::post("logout", [AuthController::class, "logout"])->name("auth.logout");
 

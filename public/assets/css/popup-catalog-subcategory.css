@@ -12,17 +12,12 @@
 .popup-subcategory_header{
     height: 71px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     background-color: #212529;
     padding: 0 10px;
 }
-.popup-menu-subcategory-close{
-    border-radius: 50%;
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-}
+
 .popup-subcategory_content{
     height: 100vh;
     background-color: #343a40;
@@ -41,4 +36,12 @@
     border-bottom: 1px solid white;
     margin-top: 20px;
     padding: 0;
+}
+.subcategory{
+    border-bottom: 1px solid white;
+    margin-top: 20px;
+    padding: 0;
+}
+.popup_text{
+    margin-top: 20px;
 }
