@@ -5,10 +5,10 @@
     <div class="d-flex justify-content-between align-items-center my-5">
         <h2>Подкатегории</h2>
         <div class="container">
-            <form action="" method="GET" class="d-flex">
-                <input type="text" name="search" placeholder="Введите запрос" class="col-6">
+            <form action="{{ route("searchSubcategory") }}" method="GET" class="d-flex">
+                <input type="text" name="search" id="search" placeholder="Введите запрос" class="col-6">
                 <button class="btn btn-dark mx-3">Найти</button>
-                <a class="mx-3 text-decoration-none text-dark" href="/">Сбросить фильтр</a>
+                <a class="mx-3 text-decoration-none text-dark my-2" href="{{ route("indexSubCategory") }}">Сбросить фильтр</a>
             </form>
         </div>
         <a href="{{ route('Subcategories.create') }}" class="btn btn-dark">Добавить</a>

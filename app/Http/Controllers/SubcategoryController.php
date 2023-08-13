@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
@@ -12,6 +13,15 @@ class SubcategoryController extends Controller
         return view("SubCategory.SubCategory-list", [
             "subCategories"=> Subcategory::all()->sortByDesc("category_id"),
             "category"=> Category::all()
+        ]);
+    }
+
+    public function searchSubcategory(Request $request){
+        $search = $request->search;
+        return view('SubCategory.SubCategory-list', [
+            "category"=> Category::all()->sortBy("name"),
+            "products"=> Product::all()->sortBy("name"),
+            "subCategories"=> Subcategory::where('name', 'LIKE', "%$search%")->get(),
         ]);
     }
 

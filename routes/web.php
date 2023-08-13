@@ -70,6 +70,7 @@ Route::middleware('role:super-admin')->group(function () {
     //Подкатегории
     Route::prefix("subcategories")->group(function () {
         Route::get("/", [SubcategoryController::class, "SubCategoryList"])->name("indexSubCategory");
+        Route::get("/searchSubcategory", [SubcategoryController::class, "searchSubcategory"])->name("searchSubcategory");
         Route::get("create", [SubcategoryController::class, "createSubCategory"])->name("Subcategories.create");
         Route::post("create", [SubcategoryController::class, "storeSubCategory"])->name("Subcategories.store");
         Route::get("{subcategoryId}/edit", [SubcategoryController::class, "editSubCategory"])->name("Subcategories.edit");
